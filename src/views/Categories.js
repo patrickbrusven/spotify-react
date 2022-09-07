@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import SpotifyService from '../services/api/SpotifyWebApi.js';
+import CategoryCard from '../components/CategoryCard.js';
 
 const Categories = ({
   options,
@@ -17,16 +17,14 @@ const Categories = ({
   },
   token
 }) => {
-  const [data, setData] = useState(null);
+  const [playlists, setPlaylists] = useState(null);
 
-  const handleClick = async (id) => {
-    console.log(id);
+  const setCategoryPlaylists = async (id) => {
     try {
       const { data } = await SpotifyService.getCategoryPlaylists(token, id)
-      console.log(data);
-      setData(data);
+      setPlaylists(data);
     } catch (error) {
-      console.log(error);
+      console.log('setCategoryPlaylists', error);
     }
   }
 
@@ -35,9 +33,8 @@ const Categories = ({
       <h2>Categories</h2>
       <ul>
         {items.map((item) => 
-          <li key={item.id}> 
-            <p>{item.name}</p>
-            <img src={item.icons[0].url} alt={item.name} onClick={() => handleClick(item.id)} />
+          <li key={item.id}>
+            {item ? <CategoryCard category={item}  selectCategory={setCategoryPlaylists}/> : <h1>No Item</h1>}
           </li>
         )}
       </ul>
