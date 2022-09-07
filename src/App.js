@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
 import React, { useEffect, useState } from 'react'
+import './assets/scss/main.scss'
 
 function App() {
 
@@ -33,21 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {categories ? <Categories options={categories} token={accessToken} /> : <h1>No Categories</h1>}
-      </header>
+      {categories ? <Categories options={categories} token={accessToken} /> : <h1>No Categories</h1>}
     </div>
   );
 }
