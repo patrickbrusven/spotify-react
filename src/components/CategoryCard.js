@@ -1,5 +1,3 @@
-import React from "react";
-
 const CategoryCard = (
   {
     category,
@@ -7,9 +5,9 @@ const CategoryCard = (
   }
 ) => {
   return (
-    <div>
-      <p>{category.name}</p>
-      <img src={category.icons[0].url} alt={category.name} onClick={() => selectCategory(category.id)} />
+    <div className="cat-card" onClick={() => selectCategory(category.id)}>
+      <p className="cat-card__heading">{category.name}</p>
+      <img className="cat-card__bg-image" src={category.icons[0].url} alt={category.name} />
     </div>
   )
 }
