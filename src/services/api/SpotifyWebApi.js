@@ -35,6 +35,14 @@ class SpotifyService {
       method: 'GET'
     })
   }
+  static getPlaylistTracks(token, playlistID) {
+    return axios(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
+      headers: {
+        'Authorization' : 'Bearer ' + token
+      },
+      method: 'GET'
+    })
+  }
 }
 
 export default SpotifyService;

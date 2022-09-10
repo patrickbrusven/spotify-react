@@ -16,18 +16,9 @@ const Categories = ({
       total
     }
   },
-  token
+  token,
+  selectCategory
 }) => {
-  const [playlists, setPlaylists] = useState(null);
-
-  const setCategoryPlaylists = async (id) => {
-    try {
-      const { data } = await SpotifyService.getCategoryPlaylists(token, id)
-      setPlaylists(data);
-    } catch (error) {
-      console.log('setCategoryPlaylists', error);
-    }
-  }
 
   return (
     <div className="categories">
@@ -35,7 +26,7 @@ const Categories = ({
       <ul className="categories__list">
         {items.map((item) => 
           <li key={item.id}>
-            {item ? <CategoryCard category={item}  selectCategory={setCategoryPlaylists}/> : <h1>No Item</h1>}
+            {item ? <CategoryCard category={item}  selectCategory={selectCategory}/> : <h1>No Item</h1>}
           </li>
         )}
       </ul>
