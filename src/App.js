@@ -2,8 +2,10 @@ import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
 import Playlists from './views/Playlists.js'
+import EclipseOverlap from './components/EclipseOverlap.js'
 import React, { useEffect, useState } from 'react'
 import './assets/scss/main.scss'
+import './assets/scss/EclipseStyles.scss'
 
 function App() {
 
@@ -56,6 +58,7 @@ function App() {
     <div className="App">
       {categories ? <Categories options={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
       {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
+      <EclipseOverlap />
     </div>
   );
 }

@@ -1,0 +1,28 @@
+.eclipse-view {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  // background-color: tomato;
+  .eclipse-container {
+    position: relative;
+    width: 100%;
+    max-width: 826px;
+    background-image: linear-gradient(90deg, #edaccc 10%, #11f9df 30%, #fff151 50%, #eb9bd0 70%, #7cd2ff 90%);
+    border-radius: 50%;
+    transform: rotate(20deg);
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+    &__overlay {
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      height: 100%;
+      width: 100%;
+      background-color: #181818;
+      border-radius: 50%;
+    }
+  }
+}
