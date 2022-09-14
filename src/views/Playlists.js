@@ -1,3 +1,5 @@
+import PlaylistCard from '../components/PlaylistCard.js';
+
 const Playlists = (
   { 
     options: {
@@ -14,11 +16,7 @@ const Playlists = (
       <h2 className="categories__heading">Playlists</h2>
       <ul className="categories__list">
         {items.map((item) => 
-          <li key={item.id} onClick={() => selectPlaylist(item.id)}>
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-            <img src={item.images[0].url} alt={item.name}/>
-          </li>
+          <PlaylistCard key={item.id} playlist={item} selectPlaylist={selectPlaylist} />
         )}
       </ul>
     </div>
