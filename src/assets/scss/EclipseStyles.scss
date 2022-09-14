@@ -2,12 +2,12 @@
   height: 100vh;
   width: 100vw;
   position: relative;
-  // background-color: tomato;
   .eclipse-container {
     position: relative;
     width: 100%;
     max-width: 826px;
     background-image: linear-gradient(90deg, #edaccc 10%, #11f9df 30%, #fff151 50%, #eb9bd0 70%, #7cd2ff 90%);
+    background: linear-gradient(to left, #65c9b7, #a0bfd5 33%, #b19ace 100%);
     border-radius: 50%;
     transform: rotate(20deg);
     &::after {
@@ -25,4 +25,52 @@
       border-radius: 50%;
     }
   }
+  .logo-eclipse {
+    position: relative;
+    height: 132px;
+    width: 132px;
+    &:hover {
+      .bottom-circle {
+        animation: change-color .5s linear;
+        background-color: rgb(235, 50, 50);
+      }
+      .top-circle {
+        animation: move-left .5s linear;
+      }
+    }
+    .bottom-circle {
+      height: 132px;
+      width: 132px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: rgb(255, 255, 255);
+      z-index: 1;
+      border-radius: 50%;
+      transition: background-color 0s .5s;
+    }
+    .top-circle {
+      position: absolute;
+      top: 0px;
+      right: -14px;
+      z-index: 2;
+      transition: right 0s .5s;
+      &:hover {
+        right: 0px;
+      }
+    }
+
+  }
+}
+@keyframes move-left {
+  0%    { right: -14px; }
+  20%   { right: -10px;; }
+  80%   { right: -8px; }
+  100%  { right: -0px; }
+}
+@keyframes change-color {
+  0%    { background-color: rgb(255, 255, 255); }
+  20%   { background-color: rgb(52, 101, 247); }
+  80%   { background-color: rgb(254, 131, 0); }
+  100%  { background-color: rgb(87, 87, 87); }
 }
