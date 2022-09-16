@@ -42,3 +42,18 @@
     }
   }
 }
+
+.playlist_card {
+  position: relative;
+  &__content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: .9999;
+  }
+  &__image {
+    &--hover {
+      opacity: .5;
+    }
+  }
+}
