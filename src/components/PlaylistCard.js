@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import ArrowDown from '../assets/svgs/ArrowDown';
 
 const PlaylistCard = (
   {
@@ -27,6 +28,12 @@ const PlaylistCard = (
   //   backgroundImage : `url(${playlist.images[0].url})`
   // }
 
+  const buttonStyle = {
+    position: 'absolute',
+    right: '10px',
+    bottom: '10px',
+  }
+
   return (
     <li 
       ref={ref} 
@@ -46,6 +53,9 @@ const PlaylistCard = (
         </div>
       }
       <img className={"playlist_card__image" + ( isHover ? " playlist_card__image--hover" : "")} src={playlist.images[0].url} alt={playlist.name}/>
+      <button className="base-button" style={buttonStyle}>
+        <ArrowDown />
+      </button>
     </li>
   )
 }
