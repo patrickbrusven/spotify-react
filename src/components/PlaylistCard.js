@@ -24,9 +24,9 @@ const PlaylistCard = (
     }
   }, []);
 
-  // const bgImage = {
-  //   backgroundImage : `url(${playlist.images[0].url})`
-  // }
+  const truncateString = (str, num) =>  {
+    return str.slice(0, num) + '...';
+  }
 
   const buttonStyle = {
     position: 'absolute',
@@ -39,7 +39,6 @@ const PlaylistCard = (
       ref={ref} 
       id={'playlist-' + playlist.id}
       className="playlist_card"
-      // style={bgImage} 
       onClick={() => selectPlaylist(playlist.id)}
       onMouseEnter={() => {
           setIsHover(true)
@@ -47,15 +46,18 @@ const PlaylistCard = (
       }
       onMouseLeave={() => setIsHover(false)}
     >
-      { isHover && <div className="playlist_card__content">
-          <h2>{playlist.name}</h2>
-          <p>{playlist.description}</p>
-        </div>
-      }
-      <img className={"playlist_card__image" + ( isHover ? " playlist_card__image--hover" : "")} src={playlist.images[0].url} alt={playlist.name}/>
-      <button className="base-button" style={buttonStyle}>
-        <ArrowDown />
-      </button>
+      <div className="playlist_card__image">
+        <img className={"playlist_card__image" + ( isHover ? " playlist_card__image--hover" : "")} src={playlist.images[0].url} alt={playlist.name} />
+          { isHover &&
+            <button className="base-button" style={buttonStyle}>
+              <ArrowDown />
+            </button>
+          }
+      </div>
+      <div className="playlist_card__content">
+        <h2>{playlist.name}</h2>
+        <p>{truncateString(playlist.description, 20)}</p>
+      </div>
     </li>
   )
 }

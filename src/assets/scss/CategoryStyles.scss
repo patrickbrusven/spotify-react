@@ -44,16 +44,35 @@
 }
 
 .playlist_card {
-  position: relative;
-  &__content {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    opacity: .9999;
-  }
+  height: 275px;
+  width: 185px;
+  background-color: #212121;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   &__image {
+    position: relative;
+    border-radius: 5px;
+    height: 183px;
+    width: 183px;
     &--hover {
       opacity: .5;
     }
   }
+  &__content {
+    top: 0px;
+    left: 0px;
+    opacity: .9999;
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: .75rem;
+      color: rgb(177, 177, 177);
+    }
+  }
+
 }
