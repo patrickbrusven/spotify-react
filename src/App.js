@@ -3,6 +3,7 @@ import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
 import Playlists from './views/Playlists.js'
 import React, { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './assets/scss/main.scss'
 
 function App() {
@@ -53,10 +54,29 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {categories ? <Categories options={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
-      {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+            <div className="App">
+              <h1>Hello World</h1>
+            </div>
+          }
+        />
+        <Route path="/explore" element={
+            <div className="App">
+              {categories ? <Categories options={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
+              {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
+            </div>
+          }
+        />
+        <Route path="*" element={
+            <div className="App">
+              <h1>404 Page Not Found</h1>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
