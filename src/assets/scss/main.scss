@@ -1,3 +1,4 @@
+
 .base-button {
   cursor: pointer;
   border-radius: 50%;
@@ -7,4 +8,33 @@
   display: flex;
   border: none;
   background: #1DB954;
+}
+
+.base-anchor {
+  cursor: pointer;
+  display: block;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-primary);
+  border: solid 2px var(--color-primary);
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: transform .12s ease-in;
+  svg {
+    height: 16px;
+    width: 16px;
+    display: block;
+  }
+  &:hover {
+    transform: scale(1.03);
+  }
+  &:focus {
+    transform: scale(1.03);
+    outline: none;
+
+
+  }
 }

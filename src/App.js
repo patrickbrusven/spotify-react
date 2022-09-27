@@ -2,12 +2,12 @@ import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
 import Playlists from './views/Playlists.js'
+import ArrowRight from './assets/svgs/ArrowRight';
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import './assets/scss/main.scss'
 
 function App() {
-
   const [accessToken, setAccessToken] = useState('');
   const [categories, setCategories] = useState(null);
   const [playlists, setPlaylists] = useState(null);
@@ -58,7 +58,10 @@ function App() {
       <Routes>
         <Route path="/" element={
             <div className="App">
-              <h1>Hello World</h1>
+              <h1>Splorify</h1>
+              <Link to="/explore" className="base-anchor">
+                <p>EXPLORE</p><ArrowRight />
+              </Link>
             </div>
           }
         />
