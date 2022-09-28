@@ -1,4 +1,11 @@
-
+.centered-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
 .base-button {
   cursor: pointer;
   border-radius: 50%;
@@ -34,7 +41,5 @@
   &:focus {
     transform: scale(1.03);
     outline: none;
-
-
   }
 }

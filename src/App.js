@@ -57,7 +57,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={
-            <div className="App">
+            <div className="App centered-layout">
               <h1>Splorify</h1>
               <Link to="/explore" className="base-anchor">
                 <p>EXPLORE</p><ArrowRight />
