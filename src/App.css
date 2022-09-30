@@ -13,3 +13,8 @@ body {
 li {
   list-style: none;
 }
+
+:root {
+  --color-primary: #1DB954;
+}
+
