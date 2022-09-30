@@ -17,14 +17,20 @@ const Categories = ({
     }
   },
   token,
-  selectCategory
+  selectCategory,
+  filterValue,
 }) => {
-
+  const filterItems = () => {
+    if(filterValue) {
+      return items.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
+    }
+    return items;
+  } 
   return (
     <div className="categories">
       <h2 className="categories__heading">Categories</h2>
       <ul className="categories__list">
-        {items.map((item) => 
+        {filterItems().map((item) => 
           <li key={item.id}>
             {item ? <CategoryCard category={item}  selectCategory={selectCategory}/> : <h1>No Item</h1>}
           </li>

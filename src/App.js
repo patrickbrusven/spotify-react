@@ -1,6 +1,7 @@
 import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
+import BaseInput from './components/BaseInput';
 import Playlists from './views/Playlists.js'
 import ArrowRight from './assets/svgs/ArrowRight';
 import React, { useEffect, useState } from 'react'
@@ -12,6 +13,7 @@ function App() {
   const [categories, setCategories] = useState(null);
   const [playlists, setPlaylists] = useState(null);
   const [tracks, setTracks] = useState(null);
+  const [ inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
   useEffect( () => {
     const fetchToken = async () => {
@@ -53,6 +55,10 @@ function App() {
     }
   }
 
+  const handleInputChanged = (inputString) => {
+    setInputValue(inputString);
+  }
+
   const handleTransition = (e, route) => {
     e.preventDefault();
     setTimeout(() => {
@@ -73,7 +79,8 @@ function App() {
       />
       <Route path="/explore" element={
           <div className="App">
-            {categories ? <Categories options={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
+            <BaseInput inputChanged={handleInputChanged} inputValue={inputValue} />
+            {categories ? <Categories options={categories} filterValue={inputValue} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
             {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
           </div>
         }
