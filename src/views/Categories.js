@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import SpotifyService from '../services/api/SpotifyWebApi.js';
 import CategoryCard from '../components/CategoryCard.js';
 import '../assets/scss/CategoryStyles.scss'
 
@@ -20,11 +18,14 @@ const Categories = ({
   selectCategory,
   filterValue,
 }) => {
+
+  const localItems = items.map(item => ({...item, tags: []}));
+
   const filterItems = () => {
     if(filterValue) {
-      return items.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
+      return localItems.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
     }
-    return items;
+    return localItems;
   } 
   return (
     <div className="categories">
