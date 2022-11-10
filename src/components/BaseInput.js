@@ -1,7 +1,5 @@
-import { useState } from "react";
 const BaseInput = (props) => {
   const { placeholder = 'example placeholder', type = 'text', inputChanged, inputValue} = props;
-  // const [ inputValue, setInputValue] = useState(initialValue);
   const handleInput = (e) => {
     inputChanged(e.target.value)
   }
