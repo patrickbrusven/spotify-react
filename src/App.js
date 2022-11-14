@@ -29,10 +29,21 @@ function App() {
   const fetchCategories = async (token) => {
     try {
       const { data } = await SpotifyService.getCategories(token);
-      setCategories(data);
+      const addTagsKey = data.categories.items.map(item => ({...item, tags: []}));
+      setCategories(addTagsKey);
     } catch (error) {
       console.log('fetchCategories', error);
     }
+  }
+
+  const addTagToCategorie = (id, tag) => {
+    const addTag = categories.map(item => {
+      if (item.id === id) {
+        item.tags.push(tag);
+      };
+      return item;
+    });
+    setCategories(addTag);
   }
 
   const fetchCategoryPlaylists = async (id) => {
@@ -73,7 +84,7 @@ function App() {
       />
       <Route path="/explore" element={
           <div className="App">
-            {categories ? <Categories options={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} /> : <h1>No Categories</h1>}
+            {categories ? <Categories categories={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} submitTag={addTagToCategorie} /> : <h1>No Categories</h1>}
             {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
           </div>
         }
