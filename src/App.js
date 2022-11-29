@@ -8,6 +8,7 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './assets/scss/main.scss'
 
 function App() {
+  const LOGIN_URI ='http://localhost:8080/login';
   const [accessToken, setAccessToken] = useState('');
   const [categories, setCategories] = useState(null);
   const [playlists, setPlaylists] = useState(null);
@@ -79,6 +80,9 @@ function App() {
             <Link to="/explore" className="base-anchor" onClick={e => handleTransition(e, '/explore')} >
               <p>EXPLORE</p><ArrowRight />
             </Link>
+            <a href={LOGIN_URI} className="base-anchor">
+              <p>LOGIN</p><ArrowRight />
+            </a>
           </div>
         }
       />
