@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SpotifyConnect from "../components/SpotifyConnect";
 
 
 function Me() {
@@ -37,6 +38,7 @@ function Me() {
         :
         <h1>I'm not Loading</h1>
       }
+      <SpotifyConnect />
     </>
   );
 }
