@@ -2,6 +2,7 @@ import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './views/Categories.js'
 import Playlists from './views/Playlists.js'
+import Me from './views/Me.js'
 import ArrowRight from './assets/svgs/ArrowRight';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -90,6 +91,12 @@ function App() {
           <div className="App">
             {categories ? <Categories categories={categories} token={accessToken} selectCategory={fetchCategoryPlaylists} submitTag={addTagToCategorie} /> : <h1>No Categories</h1>}
             {playlists ? <Playlists options={playlists} token={accessToken} selectPlaylist={fetchPlaylistTracks} /> : <h1>No Playlists</h1>}
+          </div>
+        }
+      />
+      <Route path="/me" element={
+          <div className="App">
+            <Me/>
           </div>
         }
       />
