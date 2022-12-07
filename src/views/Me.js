@@ -5,7 +5,8 @@ import SpotifyConnect from "../components/SpotifyConnect";
 
 function Me() {
   const queryParams = new URLSearchParams(window.location.search);
-  const access_token = queryParams.get('access_token');
+
+  const accessToken = queryParams.get('access_token');
   const token_type = queryParams.get('token_type');
 
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ function Me() {
       try {
         const { data } = await axios('https://api.spotify.com/v1/me/top/artists', {
           headers: {
-            Authorization: `${token_type} ${access_token}`
+            Authorization: `${token_type} ${accessToken}`
           },
           method: 'GET',
           json: true,
@@ -38,7 +39,7 @@ function Me() {
         :
         <h1>I'm not Loading</h1>
       }
-      <SpotifyConnect />
+      <SpotifyConnect accessToken={accessToken}/>
     </>
   );
 }
