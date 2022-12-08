@@ -1,9 +1,8 @@
 import './App.css';
 import LandingPage from './views/LandingPage.js'
 import ExplorePage from './views/ExplorePage';
+import UserPage from './views/UserPage';
 import SpotifyService from './services/api/SpotifyWebApi.js'
-
-import Me from './views/Me.js'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import './assets/scss/main.scss'
@@ -35,7 +34,7 @@ function App() {
       />
       <Route path="/me" element={
           <div className="App">
-            <Me/>
+            <UserPage/>
           </div>
         }
       />

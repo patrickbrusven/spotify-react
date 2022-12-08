@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SpotifyConnect from "../components/sections/SpotifyConnect";
 
 
-function Me() {
+function UserPage() {
   const queryParams = new URLSearchParams(window.location.search);
 
   const accessToken = queryParams.get('access_token');
@@ -44,4 +44,4 @@ function Me() {
   );
 }
 
-export default Me;
+export default UserPage;
