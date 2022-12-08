@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BaseInput from '../components/BaseInput';
+import BaseInput from '../baseUI/BaseInput';
 
 const CategoryCard = (
   {

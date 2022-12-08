@@ -1,4 +1,4 @@
-import PlaylistCard from '../components/PlaylistCard.js';
+import PlaylistCard from '../cards/PlaylistCard.js';
 
 const Playlists = (
   { 
