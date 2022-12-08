@@ -24,14 +24,13 @@ function SpotifyConnect(props) {
     script.async = true;
 
     document.body.appendChild(script);
-
+    
     window.onSpotifyWebPlaybackSDKReady = () => {
-        const player = new window.Spotify.Player({
-            name: 'Web Playback SDK',
-            getOAuthToken: cb => { cb(props.accessToken); },
-            volume: 0.5
+          const player = new window.Spotify.Player({
+          name: 'Web Playback SDK',
+          getOAuthToken: cb => { cb(props.accessToken); },
+          volume: 0.5
         });
-        console.log(player);
         setPlayer(player);
 
         player.addListener('ready', ({ device_id }) => {
@@ -55,8 +54,8 @@ function SpotifyConnect(props) {
           });
       
         }));
-
-        player.connect();
+        
+          player.connect();
       };
     }, []);
     return (
@@ -75,7 +74,18 @@ function SpotifyConnect(props) {
                                     current_track.artists[0].name
                                     }</div>
                   </div>
-              </div>
+                  <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
+                    &lt;&lt;
+                  </button>
+
+                  <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
+                      { is_paused ? "PLAY" : "PAUSE" }
+                  </button>
+
+                  <button className="btn-spotify" onClick={() => { player.nextTrack() }} >
+                        &gt;&gt;
+                  </button>
+            </div>
           </div>
        </>
   );
