@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import ArrowDown from '../assets/svgs/ArrowDown';
+import ArrowDown from '../../assets/svgs/ArrowDown';
 
 const PlaylistCard = (
   {

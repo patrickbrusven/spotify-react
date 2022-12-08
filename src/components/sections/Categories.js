@@ -1,7 +1,7 @@
-import CategoryCard from '../components/CategoryCard.js';
-import BaseInput from '../components/BaseInput.js';
+import CategoryCard from '../cards/CategoryCard.js';
+import BaseInput from '../baseUI/BaseInput.js';
 import { useState } from 'react';
-import '../assets/scss/CategoryStyles.scss'
+import '../../assets/scss/CategoryStyles.scss'
 import React from 'react';
 
 const Categories = ({

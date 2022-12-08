@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import SpotifyConnect from "../components/SpotifyConnect";
+import SpotifyConnect from "../components/sections/SpotifyConnect";
 
 
 function Me() {

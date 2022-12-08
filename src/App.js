@@ -1,7 +1,7 @@
 import './App.css';
 import SpotifyService from './services/api/SpotifyWebApi.js'
-import Categories from './views/Categories.js'
-import Playlists from './views/Playlists.js'
+import Categories from './components/sections/Categories.js'
+import Playlists from './components/sections/Playlists.js'
 import Me from './views/Me.js'
 import ArrowRight from './assets/svgs/ArrowRight';
 import React, { useEffect, useState } from 'react'
