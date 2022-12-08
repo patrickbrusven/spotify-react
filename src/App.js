@@ -1,20 +1,19 @@
 import './App.css';
+import LandingPage from './views/LandingPage.js'
 import SpotifyService from './services/api/SpotifyWebApi.js'
 import Categories from './components/sections/Categories.js'
 import Playlists from './components/sections/Playlists.js'
 import Me from './views/Me.js'
-import ArrowRight from './assets/svgs/ArrowRight';
 import React, { useEffect, useState } from 'react'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './assets/scss/main.scss'
 
 function App() {
-  const LOGIN_URI ='http://localhost:8080/login';
   const [accessToken, setAccessToken] = useState('');
   const [categories, setCategories] = useState(null);
   const [playlists, setPlaylists] = useState(null);
   const [tracks, setTracks] = useState(null);
-  const navigate = useNavigate();
+  
   useEffect( () => {
     const fetchToken = async () => {
       try {
@@ -66,25 +65,10 @@ function App() {
     }
   }
 
-  const handleTransition = (e, route) => {
-    e.preventDefault();
-    setTimeout(() => {
-      navigate(route);
-    }, 1000);
-  }
-
   return (
     <Routes>
       <Route path="/" element={
-          <div className="App centered-layout">
-            <h1>Splorify</h1>
-            <Link to="/explore" className="base-anchor" onClick={e => handleTransition(e, '/explore')} >
-              <p>EXPLORE</p><ArrowRight />
-            </Link>
-            <a href={LOGIN_URI} className="base-anchor">
-              <p>LOGIN</p><ArrowRight />
-            </a>
-          </div>
+          <LandingPage />
         }
       />
       <Route path="/explore" element={
