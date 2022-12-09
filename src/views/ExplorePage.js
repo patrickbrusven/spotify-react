@@ -14,7 +14,7 @@ function ExplorePage(props) {
 
   const fetchCategories = async (token) => {
     try {
-      const { data } = await SpotifyService.getCategories(token);
+      const { data } = await SpotifyService.getCategories(props.accessToken);
       const addTagsKey = data.categories.items.map(item => ({...item, tags: []}));
       setCategories(addTagsKey);
     } catch (error) {
