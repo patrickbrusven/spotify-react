@@ -11,7 +11,7 @@ function UserPage() {
   const [user, setUser] = useState(null);
   const [playerState, setPlayerState] = useState(null);
   const [availableDevices, setAvailableDevices] = useState(null);
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
