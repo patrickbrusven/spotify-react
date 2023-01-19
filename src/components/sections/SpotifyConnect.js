@@ -58,6 +58,12 @@ const SpotifyConnect = memo(function SpotifyConnect(props) {
         player.connect();
       };
     }
+    return function cleanup() {
+      if (player) {
+        console.log("disconnect");
+        player.disconnect();
+      }
+    };
   }, []);
   return (
     <>
