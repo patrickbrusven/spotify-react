@@ -14,7 +14,7 @@
   padding: 5px;
   display: flex;
   border: none;
-  background: #1DB954;
+  background: #1db954;
 }
 
 .base-anchor {
@@ -29,7 +29,7 @@
   padding: 5px;
   border-radius: 5px;
   width: max-content;
-  transition: transform .12s ease-in;
+  transition: transform 0.12s ease-in;
   svg {
     height: 16px;
     width: 16px;
@@ -41,5 +41,30 @@
   &:focus {
     transform: scale(1.03);
     outline: none;
+  }
+}
+
+.track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  &__time {
+    font-size: 11px;
+  }
+  &__bar-time {
+    width: 250px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #bfbfbf;
+    position: relative;
+    &__progress {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 3px;
+      border-radius: 3px;
+      background-color: #1db954;
+    }
   }
 }
