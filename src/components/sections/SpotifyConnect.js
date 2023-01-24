@@ -35,7 +35,6 @@ const SpotifyConnect = memo(function SpotifyConnect(props) {
         setPlayer(player);
 
         player.addListener("ready", ({ device_id }) => {
-          console.log("Ready with Device ID", device_id);
           props.handleDeviceID(device_id);
         });
 
@@ -47,6 +46,7 @@ const SpotifyConnect = memo(function SpotifyConnect(props) {
           if (!state) {
             return;
           }
+          props.handleWebPlaybackState(state);
 
           setTrack(state.track_window.current_track);
           setPaused(state.paused);

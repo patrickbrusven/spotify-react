@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import SpotifyConnect from "../components/sections/SpotifyConnect";
 import SpotifyWebApiPlayer from "../services/api/SpotifyWebApiPlayer";
+import useWebPlaybackState from "../hooks/useWebPlaybackState";
+import ProgressBar from "../components/ProgressBar";
 
 function UserPage() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -12,6 +14,7 @@ function UserPage() {
   const [playerState, setPlayerState] = useState(null);
   const [availableDevices, setAvailableDevices] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [webPlaybackState, setWebPlaybackState] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,13 +42,27 @@ function UserPage() {
     SpotifyWebApiPlayer.transferPlayback(token_type, accessToken, id);
   }, []);
 
+  const handleWebPlaybackState = useCallback((state) => {
+    setWebPlaybackState(state);
+  }, []);
+
+  const [position, duration, progress] = useWebPlaybackState(webPlaybackState);
+
   return (
     <>
       {isLoading ? <h1>I'm Loading</h1> : <h1>I'm not Loading</h1>}
       <SpotifyConnect
         accessToken={accessToken}
         handleDeviceID={handleDeviceID}
+        handleWebPlaybackState={handleWebPlaybackState}
       />
+      {webPlaybackState && (
+        <ProgressBar
+          position={position}
+          duration={duration}
+          progress={progress}
+        />
+      )}
     </>
   );
 }
