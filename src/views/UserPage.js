@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import SpotifyConnect from "../components/sections/SpotifyConnect";
 import SpotifyWebApiPlayer from "../services/api/SpotifyWebApiPlayer";
+import useWebPlaybackState from "../hooks/useWebPlaybackState";
 
 function huminizeMS(ms) {
   let seconds = Math.floor(ms / 1000);
@@ -9,9 +10,6 @@ function huminizeMS(ms) {
   return `${minutes}:${seconds}`;
 }
 
-function calcPositionOfDuration(position, duration) {
-  return (position / duration) * 100;
-}
 
 function UserPage() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -55,26 +53,7 @@ function UserPage() {
     setWebPlaybackState(state);
   }, []);
 
-  const [position, setPosition] = useState(0);
-  const [duration, setDurration] = useState(null);
-  const progress = calcPositionOfDuration(position, duration);
-
-  useEffect(() => {
-    if (webPlaybackState) {
-      setPosition(webPlaybackState.position);
-      setDurration(webPlaybackState.duration);
-      if (!webPlaybackState.paused) {
-        const startProgressInterval = setInterval(() => {
-          setPosition((position) => {
-            return position + 1000;
-          });
-        }, 1000);
-        return () => {
-          clearInterval(startProgressInterval);
-        };
-      }
-    }
-  }, [webPlaybackState]);
+  const [position, duration, progress] = useWebPlaybackState(webPlaybackState);
 
   return (
     <>
@@ -93,7 +72,7 @@ function UserPage() {
               style={{ width: `${progress}%` }}
             ></span>
           </span>
-          <span className="track__time">{huminizeMS(duration)}</span>
+          <span className="track__time">{huminizeMS(parseInt(duration))}</span>
         </div>
       )}
     </>
