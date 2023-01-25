@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import SpotifyConnect from "../components/sections/SpotifyConnect";
 import SpotifyWebApiPlayer from "../services/api/SpotifyWebApiPlayer";
 import SpotifyServiceTracks from "../services/api/SpotifyWebApiTracks";
@@ -51,11 +51,27 @@ function UserPage() {
   const [position, duration, progress] = useWebPlaybackState(webPlaybackState);
 
   // audio analysis
+  const audioBarsWrapper = useRef(null);
 
-  const audioBarsWrapper = {
+  useEffect(() => {
+    console.log(webPlaybackState);
+    if (audioBarsWrapper.current && webPlaybackState) {
+      if (webPlaybackState.paused) {
+        audioBarsWrapper.current.childNodes.forEach((node) => {
+          node.classList.add("pause-animation");
+        });
+      } else {
+        audioBarsWrapper.current.childNodes.forEach((node) => {
+          node.classList.remove("pause-animation");
+        });
+      }
+    }
+  }, [webPlaybackState]);
+
+  const audioBarsWrapperStyle = {
     width: "max-content",
     height: "50px",
-    backgroundColor: "white",
+    backgroundColor: "#121212",
     display: "flex",
     gap: "2px",
     padding: "0px 2px",
@@ -99,7 +115,7 @@ function UserPage() {
             progress={progress}
           />
           {audioAnalysis && (
-            <div style={audioBarsWrapper}>
+            <div ref={audioBarsWrapper} style={audioBarsWrapperStyle}>
               <AudioBar
                 position={position}
                 duration={duration}
