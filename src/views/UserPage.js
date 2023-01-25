@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import SpotifyConnect from "../components/sections/SpotifyConnect";
 import SpotifyWebApiPlayer from "../services/api/SpotifyWebApiPlayer";
 import useWebPlaybackState from "../hooks/useWebPlaybackState";
 import ProgressBar from "../components/ProgressBar";
+import AudioBars from "../components/AudioBars";
 
 function UserPage() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -57,11 +58,20 @@ function UserPage() {
         handleWebPlaybackState={handleWebPlaybackState}
       />
       {webPlaybackState && (
-        <ProgressBar
-          position={position}
-          duration={duration}
-          progress={progress}
-        />
+        <>
+          <ProgressBar
+            position={position}
+            duration={duration}
+            progress={progress}
+          />
+          <AudioBars
+            token_type={token_type}
+            accessToken={accessToken}
+            position={position}
+            duration={duration}
+            webPlaybackState={webPlaybackState}
+          />
+        </>
       )}
     </>
   );
